@@ -1,0 +1,25 @@
+{
+  "name": "projet-file-rouge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theorougier/Projet-file-rouge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theorougier/Projet-file-rouge/issues"
+  },
+  "homepage": "https://github.com/theorougier/Projet-file-rouge#readme",
+  "dependencies": {
+    "formik": "^2.2.9",
+    "react-router-dom": "^6.3.0",
+    "recoil": "^0.7.2"
+  }
+}
