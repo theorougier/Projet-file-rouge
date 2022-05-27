@@ -28,3 +28,7 @@ try {
     res.status(500).send('Server erreur');  
 }
 });
+
+
+
+module.exports = router;
