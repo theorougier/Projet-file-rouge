@@ -1,8 +1,14 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
 const app = express();
 // Init Middleware
 app.use(express.json({ extended: false }));
+
+
+// Connect DB
+connectDB();
+
 
 // Test route
 app.get('/ping', (req, res) => {
