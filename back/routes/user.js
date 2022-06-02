@@ -46,7 +46,17 @@ router.get('/:id',auth, async(req,res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-})
+});
+
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        await User.findOneAndRemove(req.params.id);
+        res.json({ msg: 'User deleted' });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Server Error');
+    }
+  });
 
 
 module.exports = router;

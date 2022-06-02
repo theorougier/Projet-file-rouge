@@ -4,9 +4,9 @@ const config = require('config');
 module.exports = function (req, res, next) {
   // Get token from header
   // For postman
-  // const token = req.header('authorization');
+  const token = req.header('authorization');
   // Regular request
-  const token = req.header('token');
+  // const token = req.header('token');
 
   // Check if not token
   if (!token) {
@@ -15,9 +15,9 @@ module.exports = function (req, res, next) {
 
   try {
     // regular request
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    // const decoded = jwt.verify(token, config.get('jwtSecret'));
     // Postman request
-    // const decoded = jwt.verify(token.substring(7), config.get('jwtSecret'));
+    const decoded = jwt.verify(token.substring(7), config.get('jwtSecret'));
 
 
     req.user = decoded.user;
