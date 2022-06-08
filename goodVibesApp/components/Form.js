@@ -10,6 +10,9 @@ export default function Form({action}) {
         }
     });
 
+    const [email, setEmail] = React.useState(null)
+    const [password, setPassword] = React.useState(null)
+
     function submit(data) {
         console.log(data)
     }
@@ -21,29 +24,28 @@ export default function Form({action}) {
                     <Controller
                         control={control}
                         name={'email'}
-                        render={({onChange, value}) => (
+                        render={({field:{onChange, value}}) => (
                             <TextInput
                                 placeholder={'Email'}
                                 style={styles.input}
-                                value={value}
-                                onChangeText={console.log(value)}
+                                onChangeText={value => onChange(value)}
                             />
                         )}
                     />
                     <Controller
                         control={control}
                         name={'password'}
-                        render={({onChange, value}) => (
+                        render={({field:{onChange, value}}) => (
                             <TextInput
                                 style={styles.input}
-                                value={value}
                                 placeholder={'Mot de passe'}
+                                secureTextEntry={true}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
                     />
-                    <TouchableOpacity onPress={submit}>
-                        <Text>Submit</Text>
+                    <TouchableOpacity onPress={handleSubmit(submit)}>
+                        <Text style={styles.btn}>Connection</Text>
                     </TouchableOpacity>
                 </>
 
@@ -52,24 +54,25 @@ export default function Form({action}) {
                     <Controller
                         control={control}
                         name={'email'}
-                        render={({onChangeText, values}) => (
+                        render={({field:{onChange, value}}) => (
                             <TextInput
                                 value={values}
                                 placeholder={'Email'}
                                 style={styles.input}
-                                onChangeText={value => onChangeText(value)}
+                                onChangeText={value => onChange(value)}
                             />
                         )}
                     />
                     <Controller
                         control={control}
                         name={'password'}
-                        render={({onChangeText, values}) => (
+                        secureTextEntry={true}
+                        render={({field:{onChange, value}}) => (
                             <TextInput
                                 value={values}
                                 style={styles.input}
                                 placeholder={'Mot de passe'}
-                                onChangeText={value => onChangeText(value)}
+                                onChangeText={value => onChange(value)}
                             />
                         )}
                     />
@@ -87,5 +90,9 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 300,
     },
+    btn: {
+        backgroundColor: 'pink',
+        padding:10,
+    }
 });
 
