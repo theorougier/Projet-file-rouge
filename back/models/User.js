@@ -10,10 +10,14 @@ const UserSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  role: {
-    type: String,
+  isAdmin: {
+    type: Boolean,
     require: true,
   },
+  preferences: {
+    type: Object,
+    require: true,
+  }
 });
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

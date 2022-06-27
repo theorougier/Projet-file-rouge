@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
 router.post('/', async(req,res) => {
-const {email, password, role} = req.body;
+const {email, password, isAdmin, preferences} = req.body;
 try {
     if( await User.findOne({email})) {
         return res.status(400).json({msg:'User already exists with this email'}) 
@@ -14,7 +14,8 @@ try {
     const user = new User({
         email,
         password,
-        role,
+        isAdmin,
+        preferences,
     });
     const salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(password, salt);
@@ -56,7 +57,7 @@ router.delete('/:id', auth, async (req, res) => {
       console.error(error.message);
       res.status(500).send('Server Error');
     }
-  });
+});
 
 
 module.exports = router;
