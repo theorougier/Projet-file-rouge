@@ -24,11 +24,36 @@ router.get('/pong', (req, res) => {
   res.json('ping');
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   const admin = await User.findById(req.user.id).select('-password');
   try {
     if (admin.isAdmin) {
       const user = await User.findById(req.params.id);
+      if (!user) {
+        return res.status(400).json({ msg: 'There is no user' });
+      }
+      res.json(user);
+    } else {
+      return res.status(400).json({ msg: 'You are not a admin' });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.put('/:id', auth, async (req, res) => {
+  const admin = await User.findById(req.user.id).select('-password');
+  const {email, isAdmin, preferences} = req.body;
+
+  try {
+    if (admin.isAdmin) {
+      const user = await User.findById(req.params.id).select('-password');
+      const updatedUser = await User.findByIdAndUpdate(user.id,{
+        email: email ? email : user.email,
+        isAdmin: isAdmin ? isAdmin : user.isAdmin,
+        preferences: preferences ? preferences : user.preferences
+      })
       if (!user) {
         return res.status(400).json({ msg: 'There is no user' });
       }
