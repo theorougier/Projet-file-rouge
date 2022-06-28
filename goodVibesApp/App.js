@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import useLogin from "./hook/useLogin";
+import useUser from "./hook/useUser";
 
 export default function App() {
     const Stack = createNativeStackNavigator();
@@ -14,6 +15,7 @@ export default function App() {
         submit,
         userEmail,
     } = useLogin()
+    const {} = useUser()
 
 
     return (
