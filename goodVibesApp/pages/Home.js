@@ -1,13 +1,14 @@
 import React from 'react';
-import {Text, View, Button} from "react-native";
+import {Text, View, Button, TouchableOpacity} from "react-native";
 
-export default function Home({navigation}) {
+export default function Home({LogOut, userEmail}) {
+
     return (
         <View>
-            <Text>Home Screen</Text>
+            <Text>Salut: {userEmail}</Text>
             <Button
-                title="Go to Login"
-                onPress={() => navigation.navigate('Login')}
+                title="LogOut"
+                onPress={LogOut}
             />
         </View>
     )

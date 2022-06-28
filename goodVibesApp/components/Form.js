@@ -1,8 +1,12 @@
 import React from 'react';
 import {SafeAreaView, TouchableOpacity, StyleSheet, TextInput, Text} from "react-native";
 import {useForm, Controller} from "react-hook-form";
+import axios from 'axios';
+import 'localstorage-polyfill';
+import * as SecureStore from 'expo-secure-store';
 
-export default function Form({action}) {
+
+export default function Form({action, submit}) {
     const {control, handleSubmit, errors, reset} = useForm({
         defaultValues: {
             'email': '',
@@ -13,10 +17,6 @@ export default function Form({action}) {
     const [email, setEmail] = React.useState(null)
     const [password, setPassword] = React.useState(null)
 
-    function submit(data) {
-        console.log(data)
-    }
-
     return (
         <SafeAreaView>
             {action === 'login' ?
@@ -24,7 +24,7 @@ export default function Form({action}) {
                     <Controller
                         control={control}
                         name={'email'}
-                        render={({field:{onChange, value}}) => (
+                        render={({field: {onChange, value}}) => (
                             <TextInput
                                 placeholder={'Email'}
                                 style={styles.input}
@@ -35,7 +35,7 @@ export default function Form({action}) {
                     <Controller
                         control={control}
                         name={'password'}
-                        render={({field:{onChange, value}}) => (
+                        render={({field: {onChange, value}}) => (
                             <TextInput
                                 style={styles.input}
                                 placeholder={'Mot de passe'}
@@ -54,7 +54,7 @@ export default function Form({action}) {
                     <Controller
                         control={control}
                         name={'email'}
-                        render={({field:{onChange, value}}) => (
+                        render={({field: {onChange, value}}) => (
                             <TextInput
                                 value={values}
                                 placeholder={'Email'}
@@ -67,7 +67,7 @@ export default function Form({action}) {
                         control={control}
                         name={'password'}
                         secureTextEntry={true}
-                        render={({field:{onChange, value}}) => (
+                        render={({field: {onChange, value}}) => (
                             <TextInput
                                 value={values}
                                 style={styles.input}
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     },
     btn: {
         backgroundColor: 'pink',
-        padding:10,
+        padding: 10,
     }
 });
 
