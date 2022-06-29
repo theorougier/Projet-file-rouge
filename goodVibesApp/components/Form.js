@@ -6,7 +6,7 @@ import 'localstorage-polyfill';
 import * as SecureStore from 'expo-secure-store';
 
 
-export default function Form({action, submit}) {
+export default function Form({action, submit, styles}) {
     const {control, handleSubmit, errors, reset} = useForm({
         defaultValues: {
             'email': '',
@@ -28,6 +28,7 @@ export default function Form({action, submit}) {
                             <TextInput
                                 placeholder={'Email'}
                                 style={styles.input}
+                                autoCapitalize='none'
                                 onChangeText={value => onChange(value)}
                             />
                         )}
@@ -40,11 +41,12 @@ export default function Form({action, submit}) {
                                 style={styles.input}
                                 placeholder={'Mot de passe'}
                                 secureTextEntry={true}
+                                autoCapitalize='none'
                                 onChangeText={value => onChange(value)}
                             />
                         )}
                     />
-                    <TouchableOpacity onPress={handleSubmit(submit)}>
+                    <TouchableOpacity onPress={handleSubmit(submit)} style={styles.containerBtn}>
                         <Text style={styles.btn}>Connection</Text>
                     </TouchableOpacity>
                 </>
@@ -56,7 +58,6 @@ export default function Form({action, submit}) {
                         name={'email'}
                         render={({field: {onChange, value}}) => (
                             <TextInput
-                                value={values}
                                 placeholder={'Email'}
                                 style={styles.input}
                                 onChangeText={value => onChange(value)}
@@ -69,30 +70,18 @@ export default function Form({action, submit}) {
                         secureTextEntry={true}
                         render={({field: {onChange, value}}) => (
                             <TextInput
-                                value={values}
                                 style={styles.input}
                                 placeholder={'Mot de passe'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
                     />
+                     <TouchableOpacity onPress={handleSubmit(submit)} style={styles.containerBtn}>
+                        <Text style={styles.btn}>S'enregistrer</Text>
+                    </TouchableOpacity>
                 </>
             }
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        width: 300,
-    },
-    btn: {
-        backgroundColor: 'pink',
-        padding: 10,
-    }
-});
 
