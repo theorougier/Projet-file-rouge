@@ -52,7 +52,10 @@ router.put('/:id', auth, async (req, res) => {
       const updatedUser = await User.findByIdAndUpdate(user.id,{
         email: email ? email : user.email,
         isAdmin: isAdmin ? isAdmin : user.isAdmin,
-        preferences: preferences ? preferences : user.preferences
+        preferences: {
+          ...user.preferences,
+          ...preferences
+        }
       })
       if (!user) {
         return res.status(400).json({ msg: 'There is no user' });

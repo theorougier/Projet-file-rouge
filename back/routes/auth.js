@@ -36,7 +36,7 @@ router.post('/', async(req,res) => {
             },
             (err, token) => {
                 if(err) throw err;
-                res.json({token})
+                res.json({token, id: user.id})
             }
         );
     } catch (error) {
@@ -44,9 +44,5 @@ router.post('/', async(req,res) => {
      res.status(500).send('Server error')
     }
 });
-// TODO remove this route after
-router.get('/coucou', (req, res)=> {
-    res.json('hibou');
-})
 
 module.exports = router;
