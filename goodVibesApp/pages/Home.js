@@ -1,15 +1,14 @@
 import React from 'react';
-import {Text, View, Button, TouchableOpacity} from "react-native";
+import {Text, View, Button, TouchableOpacity, Image, StyleSheet} from "react-native";
 
-export default function Home({LogOut, userEmail}) {
+export default function Home({navigation, LogOut, styles}) {
 
     return (
-        <View>
-            <Text>Salut: {userEmail}</Text>
-            <Button
-                title="LogOut"
-                onPress={LogOut}
-            />
+        <View style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.navigate('Options')} style={styles.optionsBtn}>
+                <Image source={require('../assets/img/settings.png')}/>
+            </TouchableOpacity>
+            <Image style={styles.image} source={require('../assets/img/goodvibeslogo.png')}/>
         </View>
     )
 }

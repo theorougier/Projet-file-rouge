@@ -1,28 +1,20 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import Form from "../components/Form";
-import {Text} from "react-native";
-import axios from "axios";
-import * as SecureStore from "expo-secure-store";
-import {Button} from "react-native-web";
+import {Text, Button} from "react-native";
 
-export default function Login({navigation, submit}) {
+export default function Login({navigation, submit, styles}) {
 
     return (
         <View style={styles.container}>
-            <Text>
-                Connexion
+            <Image style={styles.image} source={require('../assets/img/goodvibeslogo.png')}/>
+            <Text style={styles.title}>
+                Se connecter
             </Text>
-            <Form action={'login'} submit={submit}/>
+            <Form action={'login'} submit={submit} styles={styles}/>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')} style={styles.containerBtn}>
+                <Text style={styles.btnSecondary}>S'enregistrer</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'lightpink',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
