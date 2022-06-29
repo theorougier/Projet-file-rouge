@@ -70,6 +70,30 @@ router.put('/:id', auth, async (req, res) => {
   }
 });
 
+router.put('/password/:id', auth, async (req, res) => {
+  const admin = await User.findById(req.user.id).select('-password');
+  const {password} = req.body;
+  try {
+    if (admin.isAdmin) {
+      const user = await User.findById(req.params.id).select('-password');
+      const salt = await bcrypt.genSalt();
+      hashedPassword = await bcrypt.hash(password, salt);
+      const updatedUser = await User.findByIdAndUpdate(user.id,{
+      password: hashedPassword
+      })
+      if (!user) {
+        return res.status(400).json({ msg: 'There is no user' });
+      }
+      res.json({msg: 'Your password has been modified'});
+    } else {
+      return res.status(400).json({ msg: 'You are not a admin' });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 router.delete('/:id', auth, async (req, res) => {
   const admin = await Users.findById(req.user.id).select('-password');
   try {
