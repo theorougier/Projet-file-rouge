@@ -49,6 +49,32 @@ router.get('/:id',auth, async(req,res) => {
     }
 });
 
+router.put('/:id', auth, async (req, res) => {
+    const localUser = await User.findById(req.user.id).select('-password');
+    const {email, preferences} = req.body;
+    try {
+        const user = await User.findById(req.params.id).select('-password');
+        if(localUser.id === user.id) {
+        const updatedUser = await User.findByIdAndUpdate(user.id,{
+          email: email ? email : user.email,
+          preferences: {
+            ...user.preferences,
+            ...preferences
+          }
+        })
+        if (!user) {
+          return res.status(400).json({ msg: 'There is no user' });
+        }       
+         res.json(user);
+        } else {
+            return res.status(400).json({ msg: 'no authorization to change that' });
+        }
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
 router.delete('/:id', auth, async (req, res) => {
     try {
         await User.findOneAndRemove(req.params.id);
