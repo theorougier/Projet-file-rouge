@@ -14,9 +14,6 @@ export default function Form({action, submit, styles}) {
         }
     });
 
-    const [email, setEmail] = React.useState(null)
-    const [password, setPassword] = React.useState(null)
-
     return (
         <SafeAreaView>
             {action === 'login' ?
