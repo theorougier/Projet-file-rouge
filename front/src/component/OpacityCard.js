@@ -5,7 +5,7 @@ function OpacityCard({ children, title }) {
 
   return (
     <div style={styles.card}>
-      <span>{title}</span>
+      <span style={styles.title}>{title}</span>
       {children}
     </div>
   );
@@ -13,8 +13,13 @@ function OpacityCard({ children, title }) {
 
 const ownStyles = () => ({
   card: {
-    background: "red",
+    background: "rgba(255, 255, 255, 0.2)",
+    borderRadius: "50px",
+    padding: "50px 100px",
+    display: "flex",
+    flexDirection: "column",
   },
+  title: { color: "white", fontSize: "3em", marginBottom: "20px" },
 });
 
 export default OpacityCard;
