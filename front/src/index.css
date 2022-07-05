@@ -19,7 +19,6 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -29,6 +28,10 @@ body {
   background: linear-gradient(#FFD1D1, #6986BE);
   line-height: 1;
   height: 100vh;
+}
+
+#root {
+	height: 100%;
 }
 
 code {
