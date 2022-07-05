@@ -1,18 +1,31 @@
-import React from 'react'
-import {Formik} from 'formik';
+import React from "react";
+import { Formik } from "formik";
 import LoginForm from "./LoginForm";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import OpacityCard from "../../component/OpacityCard";
 
 function Login() {
-    return (
-        <section>
-            <h1>Se Connecter</h1>
-            <div>
-                <LoginForm/>
-            </div>
-            <div><Link to="/">Accueil</Link> - Pas de compte? <Link to="/register">S'enregistrer</Link></div>
-        </section>
-    )
+  const styles = ownStyles();
+  return (
+    <section style={styles.parent}>
+      <OpacityCard title="Se connecter">
+        <LoginForm />
+      </OpacityCard>
+      {/* <div>
+        <Link to="/">Accueil</Link> - Pas de compte?{" "}
+        <Link to="/register">S'enregistrer</Link>
+      </div> */}
+    </section>
+  );
 }
 
-export default Login
+const ownStyles = () => ({
+  parent: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
+});
+
+export default Login;
