@@ -8,13 +8,11 @@ function Login() {
   const styles = ownStyles();
   return (
     <section style={styles.parent}>
-      <OpacityCard title="Se connecter">
+      <OpacityCard title="Connexion">
         <LoginForm />
-      </OpacityCard>
-      {/* <div>
-        <Link to="/">Accueil</Link> - Pas de compte?{" "}
+        {/* <Link to="/">Accueil</Link> - Pas de compte?{" "} */}
         <Link to="/register">S'enregistrer</Link>
-      </div> */}
+      </OpacityCard>
     </section>
   );
 }
