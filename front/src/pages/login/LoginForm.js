@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
+import CustomInput from "../../component/CustomInput";
+import CustomButton from "../../component/CustomButton";
 
 function LoginForm() {
   const styles = ownStyles();
@@ -36,7 +38,7 @@ function LoginForm() {
         /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit} style={styles.parent}>
-          <input
+          <CustomInput
             type="email"
             name="email"
             onChange={handleChange}
@@ -44,7 +46,7 @@ function LoginForm() {
             value={values.email}
           />
           {errors.email && touched.email && errors.email}
-          <input
+          <CustomInput
             type="password"
             name="password"
             onChange={handleChange}
@@ -52,9 +54,13 @@ function LoginForm() {
             value={values.password}
           />
           {errors.password && touched.password && errors.password}
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          <CustomButton
+            style={styles.button}
+            type="submit"
+            disabled={isSubmitting}
+            label="Connexion"
+            end
+          />
         </form>
       )}
     </Formik>
@@ -65,9 +71,10 @@ const ownStyles = () => ({
   parent: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+    gap: "20px",
     height: "100%",
   },
+  //   button: { alignSelf: "end" },
 });
 
 export default LoginForm;

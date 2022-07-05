@@ -19,7 +19,7 @@ function CustomInput({ title, type, name, onChange, onBlur, value }) {
 const ownStyles = () => ({
   input: {
     color: "white",
-    background: "rgba(0, 0, 0, 0.1)",
+    background: "rgba(0, 0, 0, 0.05)",
     height: "50px",
     border: "none",
     borderRadius: "20px",
