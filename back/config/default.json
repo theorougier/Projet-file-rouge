@@ -1,5 +1,6 @@
 {
     "mongoURI": "mongodb+srv://zetaluti:zetaluti@cluster0.trjpv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret": "aloevera"
+    "jwtSecret": "aloevera",
+    "ninjaKey": "9wyA1KY+KCu0WKLRS/KiAg==kAaSSy8xjC8uPo5I"
   }
   
