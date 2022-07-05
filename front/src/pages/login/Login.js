@@ -10,7 +10,7 @@ function Login() {
     <section style={styles.parent}>
       <OpacityCard title="Connexion">
         <LoginForm />
-        {/* <Link to="/">Accueil</Link> - Pas de compte?{" "} */}
+        <span>Pas de compte ?</span>
         <Link to="/register">S'enregistrer</Link>
       </OpacityCard>
     </section>

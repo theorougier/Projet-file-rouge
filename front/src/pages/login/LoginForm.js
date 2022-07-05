@@ -74,7 +74,6 @@ const ownStyles = () => ({
     gap: "20px",
     height: "100%",
   },
-  //   button: { alignSelf: "end" },
 });
 
 export default LoginForm;

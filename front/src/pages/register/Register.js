@@ -1,19 +1,31 @@
-import React from 'react'
-import {Formik} from "formik";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Formik } from "formik";
+
 import LoginForm from "../login/LoginForm";
 import RegisterForm from "./RegisterForm";
-import {Link} from "react-router-dom";
+import OpacityCard from "../../component/OpacityCard";
 
 function Register() {
-    return (
-        <section>
-            <h1>S'Enregistrer</h1>
-            <div>
-                <RegisterForm/>
-            </div>
-            <div><Link to="/">Accueil</Link> - Déjà un compte? <Link to="/login">Se connecter</Link></div>
-        </section>
-    )
+  const styles = ownStyles();
+  return (
+    <section style={styles.parent}>
+      <OpacityCard title="Création de compte">
+        <RegisterForm />
+        <span>Vous avez déjà un compte ?</span>
+        <Link to="/login">Se connecter</Link>
+      </OpacityCard>
+    </section>
+  );
 }
 
-export default Register
+const ownStyles = () => ({
+  parent: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
+});
+
+export default Register;
