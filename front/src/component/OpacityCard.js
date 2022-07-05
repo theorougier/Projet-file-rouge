@@ -18,8 +18,10 @@ const ownStyles = () => ({
     padding: "50px 100px",
     display: "flex",
     flexDirection: "column",
+    width: "70%",
+    maxWidth: "700px",
   },
-  title: { color: "white", fontSize: "3em", marginBottom: "20px" },
+  title: { color: "white", fontSize: "40px", marginBottom: "20px" },
 });
 
 export default OpacityCard;
