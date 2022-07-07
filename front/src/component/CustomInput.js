@@ -1,6 +1,6 @@
 import React from "react";
 
-function CustomInput({ title, type, name, onChange, onBlur, value }) {
+function CustomInput({ label, type, name, onChange, onBlur, value }) {
   const styles = ownStyles();
 
   return (
@@ -12,6 +12,7 @@ function CustomInput({ title, type, name, onChange, onBlur, value }) {
       onBlur={onBlur}
       value={value}
       defaultValue="test"
+      placeholder={label}
     />
   );
 }
@@ -24,8 +25,10 @@ const ownStyles = () => ({
     border: "none",
     borderRadius: "20px",
     fontSize: "18px",
+    // "&:placeholder": {
+    //   color: "red",
+    // },
   },
-  title: { color: "white", fontSize: "40px", marginBottom: "20px" },
 });
 
 export default CustomInput;

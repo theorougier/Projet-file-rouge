@@ -44,6 +44,7 @@ function RegisterForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
+            label="email"
           />
           {errors.email && touched.email && errors.email}
           <CustomInput
@@ -52,6 +53,7 @@ function RegisterForm() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.password}
+            label="password"
           />
           {errors.password && touched.password && errors.password}
           <CustomButton
