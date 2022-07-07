@@ -4,11 +4,11 @@ const axios = require('axios')
 const config = require('config');
 const auth = require('../middleware/auth');
 
-router.get('/animals/:name',auth,(req,res) => {
+router.get('/ninjafact',auth,(req,res) => {
     const name = req.params.name
     const getAnimal = async () => {
         try {
-            const response = await axios.get(`https://api.api-ninjas.com/v1/animals?name=${name}`,
+            const response = await axios.get(`https://api.api-ninjas.com/v1/facts`,
             {
             headers: {
                 'X-Api-Key': config.get('ninjaKey')
@@ -23,12 +23,23 @@ router.get('/animals/:name',auth,(req,res) => {
     getAnimal();
 })
 
-router.get('/catfact', auth,(req,res)=> {
+router.get('/cat', auth,(req,res)=> {
     const getCatFact = async () => {
         try {
             const response = await axios.get(`https://catfact.ninja/fact`);
-            console.log(response,'cest la reponse')
             return res.json(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    getCatFact();
+})
+
+router.get('/norris', auth,(req,res)=> {
+    const getCatFact = async () => {
+        try {
+            const response = await axios.get(`https://api.chucknorris.io/jokes/random`);
+            return res.json(response.data.value);
         } catch (error) {
             console.error(error);
         }
