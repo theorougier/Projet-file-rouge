@@ -5,8 +5,7 @@ const config = require('config');
 const auth = require('../middleware/auth');
 
 router.get('/ninjafact',auth,(req,res) => {
-    const name = req.params.name
-    const getAnimal = async () => {
+    const getFact = async () => {
         try {
             const response = await axios.get(`https://api.api-ninjas.com/v1/facts`,
             {
@@ -20,7 +19,7 @@ router.get('/ninjafact',auth,(req,res) => {
         }
 
     }
-    getAnimal();
+    getFact();
 })
 
 router.get('/cat', auth,(req,res)=> {

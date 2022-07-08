@@ -1,6 +1,8 @@
 {
     "mongoURI": "mongodb+srv://zetaluti:zetaluti@cluster0.trjpv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     "jwtSecret": "aloevera",
-    "ninjaKey": "9wyA1KY+KCu0WKLRS/KiAg==kAaSSy8xjC8uPo5I"
+    "ninjaKey": "9wyA1KY+KCu0WKLRS/KiAg==kAaSSy8xjC8uPo5I",
+    "catKey" : "99167167-d8e4-463f-ba6b-e8afbd6a0f1a",
+    "dogKey" : "81768a2e-3afa-4c70-9834-983160822fd8"
   }
   
