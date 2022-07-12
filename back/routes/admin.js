@@ -20,10 +20,6 @@ router.get('/all',auth, async(req,res) => {
     }
 });
 
-router.get('/pong', (req, res) => {
-  res.json('ping');
-});
-
 router.get('/:id', auth, async (req, res) => {
   const admin = await User.findById(req.user.id).select('-password');
   try {
@@ -44,7 +40,7 @@ router.get('/:id', auth, async (req, res) => {
 
 router.put('/:id', auth, async (req, res) => {
   const admin = await User.findById(req.user.id).select('-password');
-  const {email, isAdmin, preferences} = req.body;
+  const {email, isAdmin, preferences, frequency, beginningNotification, stopNotification} = req.body;
 
   try {
     if (admin.isAdmin) {
@@ -55,7 +51,10 @@ router.put('/:id', auth, async (req, res) => {
         preferences: {
           ...user.preferences,
           ...preferences
-        }
+        },
+        frequency: frequency ? frequency : user.frequency,
+        beginningNotification: beginningNotification ? beginningNotification : user.beginningNotification,
+        stopNotification: stopNotification ? stopNotification : user.stopNotification
       })
       if (!user) {
         return res.status(400).json({ msg: 'There is no user' });
