@@ -34,17 +34,5 @@ router.get('/cat', auth,(req,res)=> {
     getCatFact();
 })
 
-router.get('/norris', auth,(req,res)=> {
-    const getCatFact = async () => {
-        try {
-            const response = await axios.get(`https://api.chucknorris.io/jokes/random`);
-            return res.json(response.data.value);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    getCatFact();
-})
-
 
 module.exports = router;
