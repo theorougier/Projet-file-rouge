@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
 router.post('/', async(req,res) => {
-const {email, password, isAdmin, preferences} = req.body;
+const {email, password, isAdmin, preferences, frequency, beginningNotification, stopNotification} = req.body;
 try {
     if( await User.findOne({email})) {
         return res.status(400).json({msg:'User already exists with this email'}) 
@@ -14,8 +14,11 @@ try {
     const user = new User({
         email,
         password,
-        isAdmin,
+        isAdmin: isAdmin ? isAdmin : false,
         preferences,
+        frequency: frequency ? frequency : 6,
+        beginningNotification: beginningNotification ? beginningNotification : 9,
+        stopNotification: stopNotification ? stopNotification : 19
     });
     const salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(password, salt);
@@ -51,7 +54,7 @@ router.get('/:id',auth, async(req,res) => {
 
 router.put('/:id', auth, async (req, res) => {
     const localUser = await User.findById(req.user.id).select('-password');
-    const {email, preferences} = req.body;
+    const {email, preferences, frequency, beginningNotification, stopNotification} = req.body;
     try {
         const user = await User.findById(req.params.id).select('-password');
         if(localUser.id === user.id) {
@@ -60,7 +63,10 @@ router.put('/:id', auth, async (req, res) => {
           preferences: {
             ...user.preferences,
             ...preferences
-          }
+          },
+          frequency: frequency ? frequency : user.frequency,
+          beginningNotification: beginningNotification ? beginningNotification : user.beginningNotification,
+          stopNotification: stopNotification ? stopNotification : user.stopNotification
         })
         if (!user) {
           return res.status(400).json({ msg: 'There is no user' });
@@ -68,6 +74,30 @@ router.put('/:id', auth, async (req, res) => {
          res.json(user);
         } else {
             return res.status(400).json({ msg: 'no authorization to change that' });
+        }
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
+  router.put('/password/:id', auth, async (req, res) => {
+    const localUser = await User.findById(req.user.id).select('-password');
+    const {password} = req.body;
+    try {
+        const user = await User.findById(req.params.id).select('-password');
+        if (localUser.id === user.id) {
+            const salt = await bcrypt.genSalt();
+            hashedPassword = await bcrypt.hash(password, salt);
+            const updatedUser = await User.findByIdAndUpdate(user.id,{
+            password: hashedPassword
+            })
+            if (!user) {
+            return res.status(400).json({ msg: 'There is no user' });
+            }
+            res.json({msg: 'Your password has been modified'});
+        } else {
+            return res.status(400).json({ msg: 'You are not a admin' });
         }
     } catch (err) {
       console.error(err.message);

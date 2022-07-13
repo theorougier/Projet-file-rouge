@@ -17,7 +17,19 @@ const UserSchema = mongoose.Schema({
   preferences: {
     type: Object,
     require: true,
-  }
+  }, 
+  frequency: {
+    type: Number,
+    require: true,
+  },
+  beginningNotification: {
+    type: Number,
+    require: true
+  },
+  stopNotification: {
+    type: Number,
+    require: true
+  } 
 });
 
 module.exports = mongoose.model('User', UserSchema);
