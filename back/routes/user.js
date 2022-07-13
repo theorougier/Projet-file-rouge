@@ -16,9 +16,9 @@ try {
         password,
         isAdmin: isAdmin ? isAdmin : false,
         preferences,
-        frequency,
-        beginningNotification,
-        stopNotification
+        frequency: frequency ? frequency : 6,
+        beginningNotification: beginningNotification ? beginningNotification : 9,
+        stopNotification: stopNotification ? stopNotification : 19
     });
     const salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(password, salt);
