@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from "./pages/Home";
@@ -14,9 +14,9 @@ export default function App() {
     const Stack = createNativeStackNavigator();
     const {
         logged,
-        LogOut,
         submit,
-        userEmail,
+        loginError,
+        LogOut,
     } = useLogin()
     const {} = useUser()
     const {styles} = useStyles()
@@ -29,9 +29,10 @@ export default function App() {
             }}>
                 {!logged ?
                     <>
-                        <Stack.Screen name="Login">{(props) => <Login {...props} submit={submit}
-                                                                      styles={styles}/>}</Stack.Screen>
-                        <Stack.Screen name="Register">{(props) => <Register {...props} submit={submit}
+                        <Stack.Screen name="Login">{(props) => <Login {...props} styles={styles}
+                                                                      submit={submit}
+                                                                      loginError={loginError}/>}</Stack.Screen>
+                        <Stack.Screen name="Register">{(props) => <Register {...props}
                                                                             styles={styles}/>}</Stack.Screen>
                     </>
                     :
@@ -45,12 +46,3 @@ export default function App() {
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'lightpink',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
