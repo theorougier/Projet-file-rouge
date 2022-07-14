@@ -94,7 +94,7 @@ router.put('/password/:id', auth, async (req, res) => {
 });
 
 router.delete('/:id', auth, async (req, res) => {
-  const admin = await Users.findById(req.user.id).select('-password');
+  const admin = await User.findById(req.user.id).select('-password');
   try {
     if (admin.isAdmin) {
       await User.findOneAndRemove(req.params.id);
