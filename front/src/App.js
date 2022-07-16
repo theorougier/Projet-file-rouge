@@ -9,7 +9,7 @@ import Profile from "./pages/profile/Profile";
 import PrivateRoute from "./component/PrivateRoute";
 import ProtectedRoute from "./component/PrivateRoute";
 import useLogin from "./hook/useLogin";
-import Preferences from "./pages/preferences/preferences";
+import Preferences from "./pages/preferences/Preferences";
 
 function App() {
   const { logged, LogOut, submit, userEmail } = useLogin();
