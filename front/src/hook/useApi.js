@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import * as SecureStore from "expo-secure-store";
+// import * as SecureStore from "expo-secure-store";
 
 export default function useApi() {
   const [randomImage, setRandomImage] = useState();
@@ -47,7 +47,7 @@ export default function useApi() {
   };
 
   Object.keys(object).map(function (key, index) {
-    console.log(object[key]);
+    // console.log(object[key]);
   });
 
   useEffect(() => {
@@ -76,41 +76,41 @@ export default function useApi() {
     return preference;
   };
 
-  const postPref = () => {
-    const preferencesConvert = Object.assign({}, preference);
-    SecureStore.getItemAsync("token").then((token) => {
-      axios
-        .put(
-          "http://localhost:5000/api/user/62bea178e901f0d35add143a",
-          {
-            preferences: preferencesConvert,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .catch(function (error) {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request);
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log("Error", error.message);
-          }
-          console.log(error.config);
-        });
-    });
-  };
+  //   const postPref = () => {
+  //     const preferencesConvert = Object.assign({}, preference);
+  //     SecureStore.getItemAsync("token").then((token) => {
+  //       axios
+  //         .put(
+  //           "http://localhost:5000/api/user/62bea178e901f0d35add143a",
+  //           {
+  //             preferences: preferencesConvert,
+  //           },
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${token}`,
+  //             },
+  //           }
+  //         )
+  //         .catch(function (error) {
+  //           if (error.response) {
+  //             // The request was made and the server responded with a status code
+  //             // that falls out of the range of 2xx
+  //             console.log(error.response.data);
+  //             console.log(error.response.status);
+  //             console.log(error.response.headers);
+  //           } else if (error.request) {
+  //             // The request was made but no response was received
+  //             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+  //             // http.ClientRequest in node.js
+  //             console.log(error.request);
+  //           } else {
+  //             // Something happened in setting up the request that triggered an Error
+  //             console.log("Error", error.message);
+  //           }
+  //           console.log(error.config);
+  //         });
+  //     });
+  //   };
 
   return {
     randomImage,
@@ -119,6 +119,6 @@ export default function useApi() {
     preference,
     imageTheme,
     selectPref,
-    postPref,
+    // postPref,
   };
 }

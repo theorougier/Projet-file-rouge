@@ -1,4 +1,8 @@
+import CustomButton from "../../component/CustomButton.js";
+import useApi from "../../hook/useApi.js";
+
 function Preferences() {
+  const { apiList } = useApi();
   const styles = ownStyles();
 
   return (
@@ -8,7 +12,9 @@ function Preferences() {
         Pour que nous puissions vous proposer un contenu adapté, dites nous les
         sujets que vous aimez
       </h1>
-      
+      {apiList.map((value, index) => (
+        <CustomButton key={index} label={value.name} />
+      ))}
     </div>
   );
 }
