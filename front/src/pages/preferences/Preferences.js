@@ -12,9 +12,11 @@ function Preferences() {
         Pour que nous puissions vous proposer un contenu adapté, dites nous les
         sujets que vous aimez
       </h1>
-      {apiList.map((value, index) => (
-        <CustomButton key={index} label={value.name} />
-      ))}
+      <div style={styles.buttons}>
+        {apiList.map((value, index) => (
+          <CustomButton key={index} label={value.name} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -27,6 +29,7 @@ const ownStyles = () => ({
     fontSize: "32px",
     textAlign: "center",
   },
+  buttons: { display: "flex", flexDirection: "column", gap: "16px" },
 });
 
 export default Preferences;
