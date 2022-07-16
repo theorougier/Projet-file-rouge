@@ -2,9 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import CustomInput from "../../component/CustomInput";
 import CustomButton from "../../component/CustomButton";
+import useLogin from "../../hook/useLogin";
 
 function RegisterForm() {
   const styles = ownStyles();
+  const { register, validate, registerError } = useLogin();
 
   return (
     <Formik
@@ -20,12 +22,13 @@ function RegisterForm() {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      // onSubmit={(values, { setSubmitting }) => {
+      //   setTimeout(() => {
+      //     alert(JSON.stringify(values, null, 2));
+      //     setSubmitting(false);
+      //   }, 400);
+      // }}
+      onSubmit={(values) => register(values)}
     >
       {({
         values,

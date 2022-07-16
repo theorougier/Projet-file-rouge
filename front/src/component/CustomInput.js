@@ -11,7 +11,7 @@ function CustomInput({ label, type, name, onChange, onBlur, value }) {
       onChange={onChange}
       onBlur={onBlur}
       value={value}
-      defaultValue="test"
+      // defaultValue="test"
       placeholder={label}
     />
   );
