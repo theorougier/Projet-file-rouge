@@ -1,15 +1,14 @@
 import React from "react";
-import { Formik } from "formik";
 import LoginForm from "./LoginForm";
 import { Link } from "react-router-dom";
 import OpacityCard from "../../component/OpacityCard";
 
-function Login() {
+function Login({ submit }) {
   const styles = ownStyles();
   return (
     <section style={styles.parent}>
       <OpacityCard title="Connexion">
-        <LoginForm />
+        <LoginForm submit={submit} />
         <span>Pas de compte ?</span>
         <Link to="/register">S'enregistrer</Link>
       </OpacityCard>

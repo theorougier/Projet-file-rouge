@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import CustomInput from "../../component/CustomInput";
 import CustomButton from "../../component/CustomButton";
 
-function LoginForm() {
+function LoginForm({ submit }) {
   const styles = ownStyles();
 
   return (
@@ -20,12 +20,13 @@ function LoginForm() {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      // onSubmit={(values, { setSubmitting }) => {
+      //   setTimeout(() => {
+      //     alert(JSON.stringify(values, null, 2));
+      //     setSubmitting(false);
+      //   }, 400);
+      // }}
+      onSubmit={(values) => submit(values)}
     >
       {({
         values,

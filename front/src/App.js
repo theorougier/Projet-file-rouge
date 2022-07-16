@@ -8,23 +8,25 @@ import { Routes } from "react-router";
 import Profile from "./pages/profile/Profile";
 import PrivateRoute from "./component/PrivateRoute";
 import ProtectedRoute from "./component/PrivateRoute";
-// import useLogin from "./hook/useLogin";
+import useLogin from "./hook/useLogin";
 
 function App() {
+  const { logged, LogOut, submit, userEmail } = useLogin();
+
+  console.log("logged ? :", logged);
+
   return (
     <Routes>
       <Route
-        exact
-        path="/"
+        path="/profile"
         element={
-          <ProtectedRoute user={false}>
-            <Home />
+          <ProtectedRoute user={logged}>
+            <Profile />
           </ProtectedRoute>
         }
       />
-      <Route exact path="login" element={<Login />} />
-      <Route exact path="register" element={<Register />} />
-      <Route exact path="profile" element={<Profile />} />
+      <Route path="/login" element={<Login submit={submit} />} />
+      <Route path="/register" element={<Register submit={submit} />} />
     </Routes>
   );
 }
