@@ -9,6 +9,7 @@ import Profile from "./pages/profile/Profile";
 import PrivateRoute from "./component/PrivateRoute";
 import ProtectedRoute from "./component/PrivateRoute";
 import useLogin from "./hook/useLogin";
+import Preferences from "./pages/preferences/preferences";
 
 function App() {
   const { logged, LogOut, submit, userEmail } = useLogin();
@@ -22,6 +23,14 @@ function App() {
         element={
           <ProtectedRoute user={logged}>
             <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/preference"
+        element={
+          <ProtectedRoute user={true}>
+            <Preferences />
           </ProtectedRoute>
         }
       />
