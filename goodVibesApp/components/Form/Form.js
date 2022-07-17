@@ -15,7 +15,7 @@ export default function Form({action, submit, styles, register}) {
     });
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{justifyContent: 'center', alignItems:'center'}}>
             {action === 'login' ?
                 <>
                     <Controller
@@ -26,7 +26,7 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Email'}
                                 style={styles.input}
                                 autoCapitalize='none'
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
@@ -40,7 +40,7 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Mot de passe'}
                                 secureTextEntry={true}
                                 autoCapitalize='none'
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
@@ -58,7 +58,7 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Email'}
                                 style={styles.input}
                                 autoCapitalize='none'
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
@@ -72,12 +72,12 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Mot de passe'}
                                 autoCapitalize='none'
                                 secureTextEntry={true}
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
                     />
-                    <PrimaryButton handlePress={handleSubmit(register)}>Connection</PrimaryButton>
+                    <PrimaryButton handlePress={handleSubmit(register)}>Inscription</PrimaryButton>
                 </>
             }
         </SafeAreaView>

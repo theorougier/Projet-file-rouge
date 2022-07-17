@@ -7,7 +7,7 @@ export default function SecondaryButton({rest, handlePress, children}) {
     const {styles} = useStyles()
 
     return (
-        <TouchableOpacity onPress={handlePress} style={styles.containerBtn}>
+        <TouchableOpacity onPress={handlePress}>
             <Text style={styles.btnSecondary}>{children}</Text>
         </TouchableOpacity>
     )

@@ -4,7 +4,7 @@ export default function useValidation() {
     const [email, setEmail] = useState()
     const [errorValidation, setErrorValidation] = useState()
 
-    function validate(text) {
+    const validate = (text) => {
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
         if (reg.test(text) === false) {
             setErrorValidation("Email invalide")
