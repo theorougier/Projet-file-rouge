@@ -75,8 +75,9 @@ export default function useStyles() {
             color: 'red'
         },
         imageRandom: {
-            width: 250,
-            height: 250,
+            width: 125,
+            height: 125,
+            margin:10,
             borderRadius: 20,
         },
         imageRandomSelected: {
@@ -84,6 +85,9 @@ export default function useStyles() {
             height: 250,
             borderRadius: 20,
             opacity: 0.2,
+        },
+        containerImage: {
+
         }
     })
 

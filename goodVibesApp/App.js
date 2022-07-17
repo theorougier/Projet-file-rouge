@@ -12,36 +12,16 @@ import Register from "./pages/Register";
 
 export default function App() {
     const Stack = createNativeStackNavigator();
-    const {
-        logged,
-        submit,
-        loginError,
-        LogOut,
-    } = useLogin()
-    const {} = useUser()
-    const {styles} = useStyles()
-
 
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{
                 headerShown: false
             }}>
-                {!logged ?
-                    <>
-                        <Stack.Screen name="Login">{(props) => <Login {...props} styles={styles}
-                                                                      submit={submit}
-                                                                      loginError={loginError}/>}</Stack.Screen>
-                        <Stack.Screen name="Register">{(props) => <Register {...props}
-                                                                            styles={styles}/>}</Stack.Screen>
-                    </>
-                    :
-                    <>
-                        <Stack.Screen name="Home">{(props) => <Home {...props} styles={styles}/>}</Stack.Screen>
-                        <Stack.Screen name="Options">{(props) => <Options {...props} styles={styles}
-                                                                          LogOut={LogOut}/>}</Stack.Screen>
-                    </>
-                }
+                <Stack.Screen name="Login">{(props) => <Login/>}</Stack.Screen>
+                <Stack.Screen name="Register">{(props) => <Register/>}</Stack.Screen>
+                <Stack.Screen name="Home">{(props) => <Home/>}</Stack.Screen>
+                <Stack.Screen name="Options">{(props) => <Options/>}</Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     );

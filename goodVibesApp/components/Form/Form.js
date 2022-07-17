@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, Text, TextInput, TouchableOpacity} from "react-native";
 import {Controller, useForm} from "react-hook-form";
 import 'localstorage-polyfill';
+import PrimaryButton from "../Button/PrimaryButton";
 
 
 export default function Form({action, submit, styles, register}) {
@@ -44,9 +45,7 @@ export default function Form({action, submit, styles, register}) {
                             />
                         )}
                     />
-                    <TouchableOpacity onPress={handleSubmit(submit)} style={styles.containerBtn}>
-                        <Text style={styles.btn}>Connection</Text>
-                    </TouchableOpacity>
+                    <PrimaryButton handlePress={handleSubmit(submit)}>Connection</PrimaryButton>
                 </>
 
                 :
@@ -78,9 +77,7 @@ export default function Form({action, submit, styles, register}) {
                             />
                         )}
                     />
-                    <TouchableOpacity onPress={handleSubmit(register)} style={styles.containerBtn}>
-                        <Text style={styles.btn}>S'enregistrer</Text>
-                    </TouchableOpacity>
+                    <PrimaryButton handlePress={handleSubmit(register)}>Connection</PrimaryButton>
                 </>
             }
         </SafeAreaView>

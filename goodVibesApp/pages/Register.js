@@ -5,13 +5,18 @@ import useLogin from "../hook/useLogin";
 import Logo from "../components/Logo/Logo";
 import LinearGradient from "react-native-linear-gradient";
 import Title from "../components/Title/Title";
+import useStyles from "../hook/useStyles";
+import SecondaryButton from "../components/Button/SecondaryButton";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
-export default function Register({navigation, styles}) {
+export default function Register() {
     const {
         register,
         validate,
-        registerError,
-    } = useLogin(navigation)
+        errorMessage,
+        navigation
+    } = useLogin()
+    const {styles} = useStyles()
 
     return (
         <View style={styles.container}>
@@ -21,10 +26,8 @@ export default function Register({navigation, styles}) {
                     S'enregistrer
                 </Title>
                 <Form styles={styles} register={register} validate={validate}/>
-                <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.containerBtn}>
-                    <Text style={styles.btnSecondary}>Se connecter</Text>
-                </TouchableOpacity>
-                <Text style={styles.errorMessage}>{registerError}</Text>
+                <SecondaryButton styles={styles} handlePress={() => navigation.navigate('Login')}>Se connecter</SecondaryButton>
+                <ErrorMessage styles={styles}>{errorMessage}</ErrorMessage>
             </LinearGradient>
         </View>
     )
