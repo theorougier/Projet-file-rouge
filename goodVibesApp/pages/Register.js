@@ -5,27 +5,35 @@ import useLogin from "../hook/useLogin";
 import Logo from "../components/Logo/Logo";
 import LinearGradient from "react-native-linear-gradient";
 import Title from "../components/Title/Title";
+import useStyles from "../hook/useStyles";
+import SecondaryButton from "../components/Button/SecondaryButton";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import LinearGradients from "../components/LinearGradients/LinearGradients";
+import FormBackground from "../components/Background/FormBackground";
 
-export default function Register({navigation, styles}) {
+export default function Register() {
     const {
         register,
         validate,
-        registerError,
-    } = useLogin(navigation)
+        errorMessage,
+        navigation
+    } = useLogin()
+    const {styles} = useStyles()
 
     return (
         <View style={styles.container}>
-            <LinearGradient style={styles.containerLinear} colors={['#FFD1D1', '#6986BE']}>
+            <LinearGradients>
                 <Logo/>
-                <Title>
-                    S'enregistrer
-                </Title>
-                <Form styles={styles} register={register} validate={validate}/>
-                <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.containerBtn}>
-                    <Text style={styles.btnSecondary}>Se connecter</Text>
-                </TouchableOpacity>
-                <Text style={styles.errorMessage}>{registerError}</Text>
-            </LinearGradient>
+                <FormBackground>
+                    <Title>
+                        Création{"\n"}de compte
+                    </Title>
+                    <Form styles={styles} register={register} validate={validate}/>
+                    <SecondaryButton styles={styles} handlePress={() => navigation.navigate('Login')}>Créer un
+                        compte</SecondaryButton>
+                    <ErrorMessage styles={styles}>{errorMessage}</ErrorMessage>
+                </FormBackground>
+            </LinearGradients>
         </View>
     )
 }

@@ -1,29 +1,26 @@
 import React from 'react';
 import {Image, TouchableOpacity, View, Text} from "react-native";
 import Logo from "../components/Logo/Logo";
+import useStyles from "../hook/useStyles";
+import {useNavigation} from "@react-navigation/core";
+import SettingButton from "../components/Button/SettingButton";
+import LinearGradients from '../components/LinearGradients/LinearGradients';
 import useApi from "../hook/useApi";
-import LinearGradient from 'react-native-linear-gradient'
-import FormPreferences from "../components/Form/FormPreferences";
 
-
-export default function Home({navigation, styles}) {
-    const {randomImage, randomFact, selectPref, postPref} = useApi()
+export default function Home() {
+    const {styles} = useStyles()
+    const navigation = useNavigation();
+    const {randomImage} = useApi()
 
     return (
         <View style={styles.container}>
-            <LinearGradient style={styles.containerLinear} colors={['#FFD1D1', '#6986BE']}>
-                <TouchableOpacity onPress={() => navigation.navigate('Options')} style={styles.optionsBtn}>
+            <LinearGradients>
+                <SettingButton handlePress={() => navigation.navigate('Options')}>
                     <Image source={require('../assets/img/settings.png')}/>
-                </TouchableOpacity>
+                </SettingButton>
                 <Logo/>
-                {/*<Title>*/}
-                {/*    Votre Images*/}
-                {/*</Title>*/}
-                {/*<Image source={{uri: randomImage}} style={styles.imageRandom}/>*/}
-                {/*<Title>Le saviez vous?</Title>*/}
-                {/*<Text style={styles.textCourant}>{randomFact}</Text>*/}
-                <FormPreferences selectPref={selectPref} postPref={postPref}/>
-            </LinearGradient>
+                <Image source={randomImage}/>
+            </LinearGradients>
         </View>
     )
 }

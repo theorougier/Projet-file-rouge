@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, Text, TextInput, TouchableOpacity} from "react-native";
 import {Controller, useForm} from "react-hook-form";
 import 'localstorage-polyfill';
+import PrimaryButton from "../Button/PrimaryButton";
 
 
 export default function Form({action, submit, styles, register}) {
@@ -14,7 +15,7 @@ export default function Form({action, submit, styles, register}) {
     });
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{justifyContent: 'center', alignItems:'center'}}>
             {action === 'login' ?
                 <>
                     <Controller
@@ -25,7 +26,7 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Email'}
                                 style={styles.input}
                                 autoCapitalize='none'
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
@@ -39,14 +40,12 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Mot de passe'}
                                 secureTextEntry={true}
                                 autoCapitalize='none'
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
                     />
-                    <TouchableOpacity onPress={handleSubmit(submit)} style={styles.containerBtn}>
-                        <Text style={styles.btn}>Connection</Text>
-                    </TouchableOpacity>
+                    <PrimaryButton handlePress={handleSubmit(submit)}>Connection</PrimaryButton>
                 </>
 
                 :
@@ -59,7 +58,7 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Email'}
                                 style={styles.input}
                                 autoCapitalize='none'
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
@@ -73,14 +72,12 @@ export default function Form({action, submit, styles, register}) {
                                 placeholder={'Mot de passe'}
                                 autoCapitalize='none'
                                 secureTextEntry={true}
-                                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+                                placeholderTextColor={'rgba(199, 199, 199, 1)'}
                                 onChangeText={value => onChange(value)}
                             />
                         )}
                     />
-                    <TouchableOpacity onPress={handleSubmit(register)} style={styles.containerBtn}>
-                        <Text style={styles.btn}>S'enregistrer</Text>
-                    </TouchableOpacity>
+                    <PrimaryButton handlePress={handleSubmit(register)}>Inscription</PrimaryButton>
                 </>
             }
         </SafeAreaView>

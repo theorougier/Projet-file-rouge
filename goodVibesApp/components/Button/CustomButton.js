@@ -1,10 +1,12 @@
 import React from 'react'
-import {Image, TouchableOpacity} from "react-native";
+import {Text, TouchableOpacity} from "react-native";
+import useStyles from "../../hook/useStyles";
 
-export default function CustomButton({rest}) {
+export default function CustomButton({handlePress, children, style}) {
+    const {styles} = useStyles()
     return (
-        <TouchableOpacity {...rest}>
-            <Image source={require('../assets/img/settings.png')}/>
+        <TouchableOpacity style={style} onPress={handlePress}>
+            <Text style={styles.btn}>{children}</Text>
         </TouchableOpacity>
     )
 }

@@ -8,14 +8,14 @@ export default function useStyles() {
             position: 'relative',
         },
         textCourant: {
-          color: 'white',
-          textAlign: 'center'
+            color: 'white',
+            textAlign: 'center'
         },
         containerLinear: {
             flex: 1,
             position: 'relative',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
         },
         image: {
             margin: 40,
@@ -30,44 +30,53 @@ export default function useStyles() {
             fontWeight: '700',
             color: 'white',
             marginTop: 25,
-            marginBottom: 25
+            marginBottom: 25,
+            textAlign: 'center'
         },
         input: {
             height: 40,
             margin: 12,
             borderWidth: 1,
             borderColor: 'white',
-            color: 'white',
+            color: 'rgba(199, 199, 199, 1)',
             padding: 10,
-            width: 300,
+            width: 200,
+            backgroundColor:'white',
+            borderRadius: 15,
         },
         btn: {
             backgroundColor: 'transparent',
-            borderWidth: 1,
-            borderColor: 'white',
             color: 'white',
-            padding: 10,
-            width: 200,
             textAlign: "center",
-            margin: 12,
+            textTransform: 'capitalize',
+            fontWeight: '600'
         },
         btnSecondary: {
-            padding: 10,
-            width: 200,
-            textAlign: "center",
-            margin: 12,
-            color: 'white'
+            color: 'white',
+            fontWeight: '600'
         },
         containerBtn: {
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            borderWidth: 2,
+            padding: 10,
+            borderColor: 'white',
+            margin: 12,
+            width: 200,
+            borderRadius: 10,
+        },
+        containerBtnBackgroundWhite: {
+            borderWidth: 2,
+            padding: 10,
+            borderColor: 'white',
+            backgroundColor:'white',
+            margin: 12,
+            width: 200,
+            borderRadius: 10,
         },
         titleH1: {
-            fontSize: 72,
+            fontSize: 64,
             padding: 20,
-            textAlign: 'center',
-            color: '#6986BE',
+            color: 'white',
+            marginTop: 20,
             fontFamily: 'GentyDemo-Regular'
         },
         errorMessage: {
@@ -75,8 +84,9 @@ export default function useStyles() {
             color: 'red'
         },
         imageRandom: {
-            width: 250,
-            height: 250,
+            width: 125,
+            height: 125,
+            margin: 10,
             borderRadius: 20,
         },
         imageRandomSelected: {
@@ -84,6 +94,17 @@ export default function useStyles() {
             height: 250,
             borderRadius: 20,
             opacity: 0.2,
+        },
+        arrow: {
+            width: 20,
+            height: 10
+        },
+        containerForm: {
+            backgroundColor: "rgba(233, 229, 229, 0.4)",
+            borderRadius: 50,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '70%'
         }
     })
 

@@ -60,7 +60,6 @@ function RegisterForm() {
           />
           {errors.password && touched.password && errors.password}
           <CustomButton
-            style={styles.button}
             type="submit"
             disabled={isSubmitting}
             label="Inscription"
