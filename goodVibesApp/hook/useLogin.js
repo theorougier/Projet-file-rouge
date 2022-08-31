@@ -8,7 +8,6 @@ export default function useLogin() {
     const [errorMessage, setErrorMessage] = useState(null)
     const navigation = useNavigation();
 
-
     const {
         errorValidation,
         validate,
@@ -20,32 +19,25 @@ export default function useLogin() {
         )
     }
 
-    const checkUserPreferences = () => {
-        SecureStore.getItemAsync('token').then((token) => {
-            SecureStore.getItemAsync('userId').then((id) => {
-                axios.get(`http://localhost:5000/api/user/${id}`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    }
-                ).then(resp => {
-                    if (resp.data.preferences) {
-                        console.log('home')
-                        navigation.navigate('Home')
-                    } else {
-                        console.log('Preferences')
-                        navigation.navigate('Preferences')
-                    }
-                }).catch(function (error) {
-                    console.log(error)
-                })
-            })
+    const checkUserPreferences = async () => {
+        let token = await SecureStore.getItemAsync('token')
+        let id = await SecureStore.getItemAsync('userId')
+        axios.get(`http://localhost:5000/api/user/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        ).then(resp => {
+            if (resp.data.preferences) {
+                navigation.navigate('Home')
+            } else {
+                navigation.navigate('Preferences')
+            }
+        }).catch(function (error) {
+            console.log(error)
         })
     }
-
-    checkUserPreferences()
-
 
     const submit = async (data) => {
         if (data.email === '' && data.password === '') {

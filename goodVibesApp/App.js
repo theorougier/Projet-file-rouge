@@ -1,15 +1,13 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import useLogin from "./hook/useLogin";
-import useUser from "./hook/useUser";
 import Options from "./pages/Options";
-import useStyles from "./hook/useStyles";
 import Register from "./pages/Register";
 import FormPreferences from "./components/Form/FormPreferences";
+import AccountParameters from "./pages/AccountParameters";
+import FavoriList from "./pages/FavoriList";
 
 export default function App() {
     const Stack = createNativeStackNavigator();
@@ -24,6 +22,8 @@ export default function App() {
                 <Stack.Screen name="Register">{(props) => <Register/>}</Stack.Screen>
                 <Stack.Screen name="Home">{(props) => <Home/>}</Stack.Screen>
                 <Stack.Screen name="Options">{(props) => <Options/>}</Stack.Screen>
+                <Stack.Screen name="PersonalInformations">{(props) => <AccountParameters/>}</Stack.Screen>
+                <Stack.Screen name="Favori">{(props) => <FavoriList/>}</Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     );
