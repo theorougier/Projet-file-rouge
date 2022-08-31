@@ -1,4 +1,4 @@
-package com.goodvibesapp.newarchitecture.modules;
+package org.name.goodVibesApp.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

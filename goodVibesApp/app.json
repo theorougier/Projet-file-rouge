@@ -1,13 +1,19 @@
 {
   "expo": {
-    "name": "goodVibesApp",
+    "name": "Good Vibes",
     "slug": "goodVibesApp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "org.name.goodVibesApp"
+      "bundleIdentifier": "org.name.goodVibesApp",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Give $(PRODUCT_NAME) permission to access your photos."
+      }
+    },
+    "android": {
+      "package": "org.name.goodVibesApp"
     }
   }
 }

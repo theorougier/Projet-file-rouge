@@ -6,7 +6,7 @@ export default function SettingButton({children, handlePress}) {
     const {styles} = useStyles()
 
     return (
-        <TouchableOpacity onPress={handlePress} style={styles.optionsBtn}>
+        <TouchableOpacity onPress={handlePress} >
             {children}
         </TouchableOpacity>
     )

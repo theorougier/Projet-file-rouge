@@ -1,25 +1,32 @@
-import React from 'react';
-import {Image, TouchableOpacity, View, Text} from "react-native";
-import Logo from "../components/Logo/Logo";
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity} from "react-native";
 import useStyles from "../hook/useStyles";
-import {useNavigation} from "@react-navigation/core";
-import SettingButton from "../components/Button/SettingButton";
 import LinearGradients from '../components/LinearGradients/LinearGradients';
-import useApi from "../hook/useApi";
+import HomeScreenImage from "../components/HomeScreen/HomeScreenImage";
+import HomeScreenFact from "../components/HomeScreen/HomeScreenFact";
 
 export default function Home() {
     const {styles} = useStyles()
-    const navigation = useNavigation();
-    const {randomImage} = useApi()
-
+    const [switchPage, setSwitchPage] = useState(false)
     return (
         <View style={styles.container}>
             <LinearGradients>
-                <SettingButton handlePress={() => navigation.navigate('Options')}>
-                    <Image source={require('../assets/img/settings.png')}/>
-                </SettingButton>
-                <Logo/>
-                <Image source={randomImage}/>
+                <View style={switchPage? styles.containerSecondaryFact : styles.containerSecondary}>
+                    {
+                        switchPage ?
+                            <HomeScreenFact styles={styles}/>
+                            :
+                            <HomeScreenImage styles={styles}/>
+                    }
+                    <View style={styles.bulletPoints}>
+                        <TouchableOpacity onPress={() => setSwitchPage(prevState => !prevState)}>
+                            <Text style={switchPage ? styles.bullet : styles.bulletActive}></Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => setSwitchPage(prevState => !prevState)}>
+                            <Text style={switchPage ? styles.bulletActive : styles.bullet}></Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </LinearGradients>
         </View>
     )
