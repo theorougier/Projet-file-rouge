@@ -10,7 +10,8 @@
       },
       "ios": {
         "buildConfiguration": "Debug",
-        "simulator": true
+        "simulator": true,
+        "bundleIdentifier": "com.theazz.goodvibesapp"
       }
     },
     "preview": {

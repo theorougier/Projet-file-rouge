@@ -53,6 +53,11 @@ export default function Home() {
                             :
                             <HomeScreenImage styles={styles}/>
                     }
+                    <View>
+                        <TouchableOpacity onPress={() => sendPushNotification()}>
+                            <Text> {'Notification push'}</Text>
+                        </TouchableOpacity>
+                    </View>
                     <View style={styles.bulletPoints}>
                         <TouchableOpacity onPress={() => setSwitchPage(prevState => !prevState)}>
                             <Text style={switchPage ? styles.bullet : styles.bulletActive}></Text>
