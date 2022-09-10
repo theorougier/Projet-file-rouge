@@ -9,7 +9,6 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import {Routes} from "react-router";
 import Profile from "./pages/profile/Profile";
-import PrivateRoute from "./component/PrivateRoute";
 import ProtectedRoute from "./component/PrivateRoute";
 
 function App() {

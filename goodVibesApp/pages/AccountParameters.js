@@ -9,9 +9,10 @@ import Title from "../components/Title/Title";
 import useLogin from "../hook/useLogin";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import FormAccountsParams from "../components/Form/FormAccountsParams";
+import FormPersonalInformation from "../components/Form/FormPersonalInformation";
 
 export default function AccountParameters({validate}) {
-    const {submitAccountParameter, errorMessageAccountParameter} = useAccountParameters()
+    const {errorMessageAccountParameter, errorMessagePersonnalParameter,submitAccountParameter, submitPersonalParameter} = useAccountParameters()
     const {styles} = useStyles()
     const {navigation} = useLogin()
 
@@ -26,17 +27,17 @@ export default function AccountParameters({validate}) {
                         </SettingButton>
                     </View>
                     <ScrollView>
-                           <View>
+                        <View>
                             <Title>{'Paramètres de compte'}</Title>
                             <FormAccountsParams submit={submitAccountParameter} styles={styles} validate={validate}/>
                             <ErrorMessage styles={styles}>{errorMessageAccountParameter}</ErrorMessage>
                         </View>
                         <View>
                             <Title>{'Informations personnels'}</Title>
-                            <Text>{'Nom'}</Text>
-                            <Text>{'Prénom'}</Text>
+                            <FormPersonalInformation submit={submitPersonalParameter} styles={styles} validate={validate}/>
+                            <ErrorMessage styles={styles}>{errorMessagePersonnalParameter}</ErrorMessage>
                         </View>
-                         <View>
+                        <View>
                             <Title>{'Paramètre de message'}</Title>
                             <Text>{'Fréquence'}</Text>
                         </View>

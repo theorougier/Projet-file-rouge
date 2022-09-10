@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
-import axios from "axios";
+import React, {useEffect, useState} from 'react'
 import * as SecureStore from "expo-secure-store";
 
 export default function useUser() {
     const [userMail, setUserMail] = useState()
+    const [userPassword, setUserPassword] = useState()
+    const [userName, setUserName] = useState()
 
     const getUser = async () => {
         let token = await SecureStore.getItemAsync('token')
@@ -16,8 +17,14 @@ export default function useUser() {
             }
         )
         const json = await response.json()
-        return setUserMail(json.email)
+        setUserMail(json.email)
+        setUserPassword(json.password)
+        setUserName(json.name)
     }
 
-    return {userMail}
+    useEffect(() => {
+        getUser()
+    }, [])
+
+    return {userMail, userPassword, userName}
 }
