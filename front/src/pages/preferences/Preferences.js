@@ -1,6 +1,6 @@
 import CustomButton from "../../component/CustomButton.js";
 import useApi from "../../hook/useApi.js";
-import { Link, NavigateFunction } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Preferences() {
   const { apiList } = useApi();

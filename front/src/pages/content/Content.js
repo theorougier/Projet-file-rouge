@@ -3,16 +3,16 @@ import useApi from "../../hook/useApi.js";
 import { Link, NavigateFunction } from "react-router-dom";
 
 function Content() {
-  const { apiList } = useApi();
+  const { randomImage } = useApi();
   const styles = ownStyles();
+
+  console.log("randomImage", randomImage);
 
   return (
     <div style={styles.container}>
       {/* <h1 style={styles.title}>1/2</h1> */}
-      <h1 style={styles.title}>
-        Pour que nous puissions vous proposer un contenu adapté, dites nous les
-        sujets que vous aimez
-      </h1>
+      <h1 style={styles.title}>Images de chats</h1>
+      <img style={styles.img} src={randomImage} alt="cat" />
       <Link to="/getContent" style={styles.link}>
         <CustomButton next end />
       </Link>
@@ -23,10 +23,11 @@ function Content() {
 const ownStyles = () => ({
   container: {
     padding: "40px 20px",
-    height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "space-between",
+    height: "100%",
   },
   title: {
     color: "white",
@@ -34,6 +35,7 @@ const ownStyles = () => ({
     fontSize: "32px",
     textAlign: "center",
   },
+  img: { maxHeight: "70%" },
   buttons: { display: "flex", flexDirection: "column", gap: "16px" },
   link: { textAlign: "end" },
 });

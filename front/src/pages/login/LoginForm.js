@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import CustomInput from "../../component/CustomInput";
 import CustomButton from "../../component/CustomButton";
 
@@ -55,12 +56,14 @@ function LoginForm({ submit }) {
             value={values.password}
           />
           {errors.password && touched.password && errors.password}
-          <CustomButton
-            style={styles.button}
-            type="submit"
-            disabled={isSubmitting}
-            label="Connexion"
-          />
+          <Link to={"/preference"} style={styles.link}>
+            <CustomButton
+              style={styles.button}
+              type="submit"
+              disabled={isSubmitting}
+              label="Connexion"
+            />
+          </Link>
         </form>
       )}
     </Formik>
@@ -74,6 +77,7 @@ const ownStyles = () => ({
     gap: "20px",
     height: "100%",
   },
+  link: { textAlign: "end" },
 });
 
 export default LoginForm;

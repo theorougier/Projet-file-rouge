@@ -6,6 +6,7 @@ export default function useApi() {
   const [randomImage, setRandomImage] = useState();
   const [randomFact, setRandomFact] = useState();
   const [preference, setPreferences] = useState([]);
+  const [currentImage, setCurrentImage] = useState();
 
   const apiList = [
     {
@@ -51,17 +52,20 @@ export default function useApi() {
   });
 
   useEffect(() => {
-    axios.get("https://dog.ceo/api/breeds/image/random").then(function (resp) {
-      return setRandomImage(resp.data.message);
-    });
-    axios
-      .get("https://api.api-ninjas.com/v1/facts?limit=1", {
-        headers: { "X-Api-Key": "10Dcsd84JCi8KfPuGm4Zfg==AFqRxwfEBg4pzVVV" },
-      })
-      .then(function (resp) {
-        return setRandomFact(resp.data[0].fact);
-      });
+    getCatImage();
   }, []);
+
+  const getCatImage = async () => {
+    const response = await fetch("https://api.thecatapi.com/v1/images/search", {
+      method: "GET",
+      headers: {
+        "x-api-key":
+          "live_NXN1mQhy1JUZ8xwFDeMTV1R0wEkGF4nkpuQlEChOZsbFZa78k6ozsjFHPx4Q3ekl",
+      },
+    });
+    const json = await response.json();
+    return setRandomImage(json[0].url);
+  };
 
   const selectPref = (e) => {
     if (preference.find((element) => element === e)) {
@@ -120,5 +124,6 @@ export default function useApi() {
     imageTheme,
     selectPref,
     // postPref,
+    currentImage,
   };
 }
