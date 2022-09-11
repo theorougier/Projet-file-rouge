@@ -6,20 +6,20 @@ import { ReactComponent as Logo } from "../../assets/img/logo.svg";
 
 function Login({ submit, logged }) {
   const styles = ownStyles();
-  if (logged) {
-    console.log("plop");
-    return <Navigate to={"/preference"} replace />;
-  } else
-    return (
-      <section style={styles.parent}>
-        <Logo style={styles.logo} />
-        <OpacityCard title="Connexion">
-          <LoginForm submit={submit} />
-          <span>Pas de compte ?</span>
-          <Link to="/register">S'enregistrer</Link>
-        </OpacityCard>
-      </section>
-    );
+  // if (logged) {
+  //   console.log("plop");
+  //   return <Navigate to={"/preference"} replace />;
+  // } else
+  return (
+    <section style={styles.parent}>
+      <Logo style={styles.logo} />
+      <OpacityCard title="Connexion">
+        <LoginForm submit={submit} />
+        <span>Pas de compte ?</span>
+        <Link to="/register">S'enregistrer</Link>
+      </OpacityCard>
+    </section>
+  );
 }
 
 const ownStyles = () => ({

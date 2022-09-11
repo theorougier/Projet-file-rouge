@@ -7,7 +7,9 @@ import useUsers from "../../hook/useAdmin";
 function Users() {
   const styles = ownStyles();
 
-  console.log(() => useUsers);
+  const { users } = useUsers();
+
+  console.log(users);
 
   return (
     <div style={styles.container}>

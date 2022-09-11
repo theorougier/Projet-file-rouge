@@ -6,15 +6,16 @@ export default function useUsers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/admin/userId")
+      .get("http://localhost:5000/api/admin/all")
       .then(async function (resp) {
         console.log("console :", resp);
         return setUsers(resp);
       })
       .catch(function (error) {
         //   setLoginError("Identifiant ou mot de passe invalide");
+        return "error";
       });
   }, []);
 
-  return users;
+  return { users };
 }

@@ -11,11 +11,12 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Preferences from "./pages/preferences/Preferences";
 import Users from "./pages/users/Users";
+import Content from "./pages/content/Content";
 
 function App() {
   const { logged, setLogged, submit } = useLogin();
 
-  console.log("logged ? :", logged);
+  // console.log("logged ? :", logged);
 
   return (
     <Routes>
@@ -48,6 +49,14 @@ function App() {
         element={
           <ProtectedRoute user={true}>
             <Users />
+          </ProtectedRoute>
+        }
+      />{" "}
+      <Route
+        path="/getContent"
+        element={
+          <ProtectedRoute user={true}>
+            <Content />
           </ProtectedRoute>
         }
       />
