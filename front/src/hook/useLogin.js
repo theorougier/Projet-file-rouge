@@ -4,18 +4,12 @@ import axios from "axios";
 import useValidation from "./useValidation";
 
 export default function useLogin(navigation) {
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(getValueFor());
   const [userEmail, setUserEmail] = useState();
   const [loginError, setLoginError] = useState(null);
   const [registerError, setRegisterError] = useState(null);
 
   const { errorValidation, validate } = useValidation();
-
-  // useEffect(() => {
-  //   getValueFor("token").then((resp) => {
-  //     setLogged(resp);
-  //   });
-  // }, []);
 
   async function getValueFor(key) {
     if (document.cookie.includes("token")) {
@@ -46,12 +40,9 @@ export default function useLogin(navigation) {
         })
         .then(async function (resp) {
           setLogged(true);
+          console.log("data :", data);
           document.cookie = `token=${resp.data.token}`;
           document.cookie = `userId=${resp.data.id}`;
-          console.log("logged :", logged);
-          setTimeout(() => {
-            window.location.replace("/profile");
-          }, 5000);
         })
         .catch(function (error) {
           setLoginError("Identifiant ou mot de passe invalide");

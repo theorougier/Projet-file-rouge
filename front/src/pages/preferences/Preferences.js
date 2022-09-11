@@ -14,15 +14,21 @@ function Preferences() {
       </h1>
       <div style={styles.buttons}>
         {apiList.map((value, index) => (
-          <CustomButton key={index} label={value.name} />
+          <CustomButton key={index} label={value.name} fullWidth />
         ))}
+        <CustomButton next end />
       </div>
     </div>
   );
 }
 
 const ownStyles = () => ({
-  container: { padding: "40px 20px", height: "100%" },
+  container: {
+    padding: "40px 20px",
+    height: "100%",
+    maxWidth: "700px",
+    alignSelf: "center",
+  },
   title: {
     color: "white",
     fontFamily: "Rubik",

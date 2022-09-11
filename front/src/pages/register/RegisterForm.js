@@ -64,7 +64,6 @@ function RegisterForm() {
             type="submit"
             disabled={isSubmitting}
             label="Inscription"
-            end
           />
         </form>
       )}

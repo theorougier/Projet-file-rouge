@@ -25,9 +25,6 @@ const ownStyles = () => ({
     border: "none",
     borderRadius: "20px",
     fontSize: "18px",
-    // "&:placeholder": {
-    //   color: "red",
-    // },
   },
 });
 

@@ -60,7 +60,6 @@ function LoginForm({ submit }) {
             type="submit"
             disabled={isSubmitting}
             label="Connexion"
-            end
           />
         </form>
       )}
