@@ -2,22 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import CustomButton from "../../component/CustomButton";
+import useUsers from "../../hook/useAdmin";
 
-function Home() {
+function Users() {
   const styles = ownStyles();
+
+  console.log(() => useUsers);
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Menu</h1>
+      <h1 style={styles.title}>Utilisateurs</h1>
       <div style={styles.buttons}>
-        <Link to={"/users"}>
-          <CustomButton label={"Utilisateurs"} />
-        </Link>
-      </div>
-      <div style={styles.buttons}>
-        <Link to={"/content"}>
-          <CustomButton label={"Contenus"} />
-        </Link>
+        <CustomButton label={"+ Ajouter un utilisateur"} />
       </div>
     </div>
   );
@@ -40,4 +36,4 @@ const ownStyles = () => ({
   buttons: { display: "flex", flexDirection: "column", gap: "16px" },
 });
 
-export default Home;
+export default Users;
