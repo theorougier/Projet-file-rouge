@@ -15,7 +15,7 @@ function Login({ submit, logged }) {
       <Logo style={styles.logo} />
       <OpacityCard title="Connexion">
         <LoginForm submit={submit} />
-        <span>Pas de compte ?</span>
+        <span>Pas de compte ? </span>
         <Link to="/register">S'enregistrer</Link>
       </OpacityCard>
     </section>
@@ -30,7 +30,7 @@ const ownStyles = () => ({
     alignItems: "center",
     height: "100%",
   },
-  logo: { maxWidth: "90%" },
+  logo: { maxWidth: "90%", marginBottom: "20px" },
 });
 
 export default Login;

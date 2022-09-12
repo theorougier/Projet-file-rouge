@@ -12,7 +12,7 @@ function Register() {
     <section style={styles.parent}>
       <OpacityCard title="Création de compte">
         <RegisterForm />
-        <span>Vous avez déjà un compte ?</span>
+        <span>Vous avez déjà un compte ? </span>
         <Link to="/login">Se connecter</Link>
       </OpacityCard>
     </section>
