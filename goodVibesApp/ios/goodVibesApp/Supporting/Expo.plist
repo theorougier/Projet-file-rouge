@@ -8,9 +8,9 @@
     <true/>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
-    <key>EXUpdatesSDKVersion</key>
-    <string>45.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@theazz/goodVibesApp</string>
+    <string>https://u.expo.dev/ecb7131d-65a3-41fd-b72e-fea2d15a16fd</string>
+    <key>EXUpdatesRuntimeVersion</key>
+    <string>1.0.0</string>
   </dict>
 </plist>

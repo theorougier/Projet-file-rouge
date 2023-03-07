@@ -8,10 +8,11 @@ import HomeScreenFact from "../components/HomeScreen/HomeScreenFact";
 export default function Home() {
     const {styles} = useStyles()
     const [switchPage, setSwitchPage] = useState(false)
+
     return (
         <View style={styles.container}>
             <LinearGradients>
-                <View style={switchPage? styles.containerSecondaryFact : styles.containerSecondary}>
+                <View style={styles.containerSecondaryFact}>
                     {
                         switchPage ?
                             <HomeScreenFact styles={styles}/>

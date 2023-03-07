@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
+  name: {
+    type: String,
+    require: false,
+    unique: true,
+  },
   email: {
     type: String,
     require: true,
@@ -17,7 +22,11 @@ const UserSchema = mongoose.Schema({
   preferences: {
     type: Object,
     require: true,
-  }, 
+  },
+  fav: {
+    type: Object,
+    require: true,
+  },
   frequency: {
     type: Number,
     require: true,

@@ -54,7 +54,7 @@ router.get('/:id',auth, async(req,res) => {
 
 router.put('/:id', auth, async (req, res) => {
     const localUser = await User.findById(req.user.id).select('-password');
-    const {email, preferences, frequency, beginningNotification, stopNotification} = req.body;
+    const {email, preferences, frequency, beginningNotification, stopNotification, fav} = req.body;
     try {
         const user = await User.findById(req.params.id).select('-password');
         if(localUser.id === user.id) {
@@ -64,6 +64,7 @@ router.put('/:id', auth, async (req, res) => {
             ...user.preferences,
             ...preferences
           },
+          fav : fav ? fav : user.fav,
           frequency: frequency ? frequency : user.frequency,
           beginningNotification: beginningNotification ? beginningNotification : user.beginningNotification,
           stopNotification: stopNotification ? stopNotification : user.stopNotification

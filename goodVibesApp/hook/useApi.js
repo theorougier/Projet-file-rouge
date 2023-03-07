@@ -8,14 +8,14 @@ export default function useApi() {
     const [randomImage, setRandomImage] = useState()
     const [randomFact, setRandomFact] = useState()
     const [randomJokes, setRandomJokes] = useState()
-    const [preference, setPreferences] = useState()
-    const [isSelected, setSelected] = useState()
+    const [preference, setPreferences] = useState([])
     const [checkPreferences, setCheckPreferences] = useState()
     const [isLoading, setLoading] = useState(true);
     const [isImageLoading, setImageLoading] = useState(true);
     const [isFactLoading, setFactLoading] = useState(true);
     const [currentImage, setCurrentImage] = useState()
     const [isAlreadyFav, setAlreadyFav] = useState(false)
+    const [selectedElement, setSelectedElement] = useState([])
     const navigation = useNavigation()
     const apiThemes =
         [
@@ -35,13 +35,14 @@ export default function useApi() {
         }
     }
 
+
     const imageRandom = async () => {
         try {
             setAlreadyFav(false)
             let token = await SecureStore.getItemAsync('token')
             let id = await SecureStore.getItemAsync('userId')
             let favList = []
-            const responseRandomise = await fetch(`http://localhost:5000/api/user/${id}`,
+            const responseRandomise = await fetch(`https://cheerify.herokuapp.com/api/users/${id}`,
                 {
                     method: 'GET',
                     headers: {
@@ -53,7 +54,7 @@ export default function useApi() {
             const preferencesCategories = await jsonRand.preferences
             const result = Object.values(preferencesCategories)[Math.floor(Math.random(0) * Object.keys(preferencesCategories).length)]
 
-            await axios.get(`http://localhost:5000/api/user/${id}`,
+            await axios.get(`https://cheerify.herokuapp.com/api/users/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -97,7 +98,6 @@ export default function useApi() {
                 setCurrentImage(json[0].id)
                 return setRandomImage(json[0].url)
             }
-
             if (favList.includes(randomImage)) {
                 setAlreadyFav(true)
             }
@@ -123,15 +123,15 @@ export default function useApi() {
         } else {
             preference.push(e)
         }
-        setSelected(e)
+        setSelectedElement([...preference])
         return preference
     }
 
     const postPref = () => {
-        const preferencesConvert = Object.assign({r}, preference)
+        const preferencesConvert = Object.assign(preference)
         SecureStore.getItemAsync('token').then((token) => {
             SecureStore.getItemAsync('userId').then((id) => {
-                axios.put(`http://localhost:5000/api/user/${id}`, {
+                axios.put(`https://cheerify.herokuapp.com/api/users/${id}`, {
                         preferences: preferencesConvert
                     },
                     {
@@ -167,14 +167,18 @@ export default function useApi() {
         let favList = []
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        await axios.get(`http://localhost:5000/api/user/${id}`,
+        await axios.get(`https://cheerify.herokuapp.com/api/users/${id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             }
         ).then(resp => {
-            favList = resp.data.fav
+            if(resp.data.fav) {
+                favList = resp.data.fav
+            } else {
+                favList = []
+            }
             setAlreadyFav(true)
         }).catch(function (error) {
             if (error.response) {
@@ -195,7 +199,7 @@ export default function useApi() {
             console.log(error.config);
         });
         if (!favList.includes(randomImage)) {
-            axios.put(`http://localhost:5000/api/user/${id}`, {
+            axios.put(`https://cheerify.herokuapp.com/api/users/${id}`, {
                     fav:
                         [
                             ...favList,
@@ -208,8 +212,6 @@ export default function useApi() {
                     }
                 }
             ).then(resp => {
-                console.log(favList)
-                console.log(resp.data)
             }).catch(function (error) {
                 if (error.response) {
                     // The request was made and the server responded with a status code
@@ -229,7 +231,7 @@ export default function useApi() {
                 console.log(error.config);
             });
         } else {
-            axios.put(`http://localhost:5000/api/user/${id}`, {
+            axios.put(`https://cheerify.herokuapp.com/api/users/${id}`, {
                     fav:
                         [
                             ...favList.filter((element) => element !== randomImage)
@@ -273,7 +275,6 @@ export default function useApi() {
         randomJokes,
         apiThemes,
         preference,
-        isSelected,
         isLoading,
         isImageLoading,
         isFactLoading,
@@ -283,9 +284,10 @@ export default function useApi() {
         setRandomImage,
         setRandomFact,
         isAlreadyFav,
+        selectedElement,
         saveFav,
         imageRandom,
         selectPref,
-        postPref
+        postPref,
     }
 }

@@ -1,14 +1,14 @@
 import React from 'react'
-import LinearGradient from "react-native-linear-gradient";
 import useStyles from "../../hook/useStyles";
+import {View} from 'react-native';
 
 
 export default function LinearGradients({children}) {
     const {styles} = useStyles()
 
     return (
-        <LinearGradient style={styles.containerLinear} colors={["#C5719E", "#CFA371"]}>
+        <View style={styles.containerLinear}>
             {children}
-        </LinearGradient>
+        </View>
     )
 }

@@ -10,7 +10,7 @@ export default function useFavoriList() {
         try {
             let token = await SecureStore.getItemAsync('token')
             let id = await SecureStore.getItemAsync('userId')
-            const response = await fetch(`http://localhost:5000/api/user/${id}`,
+            const response = await fetch(`https://cheerify.herokuapp.com/api/users/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -30,7 +30,7 @@ export default function useFavoriList() {
         let favList = []
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        await axios.get(`http://localhost:5000/api/user/${id}`,
+        await axios.get(`https://cheerify.herokuapp.com/api/users/${id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -56,7 +56,7 @@ export default function useFavoriList() {
             }
             console.log(error.config);
         });
-        await axios.put(`http://localhost:5000/api/user/${id}`, {
+        await axios.put(`https://cheerify.herokuapp.com/api/users/${id}`, {
                 fav:
                     [
                         ...favList.filter((element) => element !== imageToRemove)
