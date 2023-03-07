@@ -41,7 +41,7 @@ export default function useApi() {
             let token = await SecureStore.getItemAsync('token')
             let id = await SecureStore.getItemAsync('userId')
             let favList = []
-            const responseRandomise = await fetch(`http://localhost:5000/api/user/${id}`,
+            const responseRandomise = await fetch(`http://localhost:5001/api/user/${id}`,
                 {
                     method: 'GET',
                     headers: {
@@ -53,7 +53,7 @@ export default function useApi() {
             const preferencesCategories = await jsonRand.preferences
             const result = Object.values(preferencesCategories)[Math.floor(Math.random(0) * Object.keys(preferencesCategories).length)]
 
-            await axios.get(`http://localhost:5000/api/user/${id}`,
+            await axios.get(`http://localhost:5001/api/user/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -167,7 +167,7 @@ export default function useApi() {
         let favList = []
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        await axios.get(`http://localhost:5000/api/user/${id}`,
+        await axios.get(`http://localhost:5001/api/user/${id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -195,7 +195,7 @@ export default function useApi() {
             console.log(error.config);
         });
         if (!favList.includes(randomImage)) {
-            axios.put(`http://localhost:5000/api/user/${id}`, {
+            axios.put(`http://localhost:5001/api/user/${id}`, {
                     fav:
                         [
                             ...favList,
@@ -229,7 +229,7 @@ export default function useApi() {
                 console.log(error.config);
             });
         } else {
-            axios.put(`http://localhost:5000/api/user/${id}`, {
+            axios.put(`http://localhost:5001/api/user/${id}`, {
                     fav:
                         [
                             ...favList.filter((element) => element !== randomImage)

@@ -22,7 +22,7 @@ export default function useLogin() {
     const checkUserPreferences = async () => {
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        axios.get(`http://localhost:5000/api/user/${id}`,
+        axios.get(`http://localhost:5001/api/user/${id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ export default function useLogin() {
         } else if (data.email === '') {
             setErrorMessage("Le champ mail n'est pas renseigné ")
         } else {
-            axios.post("http://localhost:5000/api/auth", {
+            axios.post("http://localhost:5001/api/auth", {
                 email: data.email,
                 password: data.password
             }).then(async function (resp) {
@@ -70,7 +70,7 @@ export default function useLogin() {
         } else if (errorValidation === "Email invalide") {
             setErrorMessage(errorValidation)
         } else {
-            axios.post("http://localhost:5000/api/user", {
+            axios.post("http://localhost:5001/api/user", {
                 email: data.email,
                 password: data.password,
                 isAdmin: false,
