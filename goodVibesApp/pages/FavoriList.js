@@ -23,14 +23,14 @@ export default function FavoriList() {
                     <View style={styles.flexRowContainer}>
                         <Logo/>
                         <SettingButton handlePress={() => navigation.navigate('Options')}>
-                            <Image source={require('../assets/img/arrowLeft.png')}/>
+                            <Image source={require('../assets/img/arrowLeft-2.png')}/>
                         </SettingButton>
                     </View>
                     <Title>Mes Favoris</Title>
                     <ScrollView>
                         {
                             isListFavLoading ?
-                                <Text>Loading...</Text>
+                                <Text style={{textAlign:'center', height: 300, display:'flex', alignItems:'center', color:'white'}}>Loading...</Text>
                                 :
                                 listFav.map(element => (
                                     <View key={Math.random(0) * 99999} style={{width: '100%'}}>

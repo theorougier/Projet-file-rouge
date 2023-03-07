@@ -16,8 +16,6 @@ export default function FormMessageParams({action, submit, styles, register}) {
         }
     });
 
-    console.log(userMail, userPassword)
-
     return (
         <SafeAreaView style={{justifyContent: 'center', alignItems: 'center'}}>
             <>
@@ -27,7 +25,7 @@ export default function FormMessageParams({action, submit, styles, register}) {
                     render={({field: {onChange, value}}) => (
                         <TextInput
                             placeholder={'Email'}
-                            value={userMail}
+                            value={value}
                             style={styles.input}
                             autoCapitalize='none'
                             placeholderTextColor={'rgba(199, 199, 199, 1)'}
@@ -43,7 +41,7 @@ export default function FormMessageParams({action, submit, styles, register}) {
                             style={styles.input}
                             placeholder={'Mot de passe'}
                             secureTextEntry={true}
-                            value={userPassword}
+                            value={value}
                             autoCapitalize='none'
                             placeholderTextColor={'rgba(199, 199, 199, 1)'}
                             onChangeText={value => onChange(value)}

@@ -29,8 +29,7 @@ export default function Register() {
                         Création{"\n"}de compte
                     </Title>
                     <Form styles={styles} register={register} validate={validate}/>
-                    <SecondaryButton styles={styles} handlePress={() => navigation.navigate('Login')}>Créer un
-                        compte</SecondaryButton>
+                    <SecondaryButton styles={styles} handlePress={() => navigation.navigate('Login')}>Se connecter</SecondaryButton>
                     <ErrorMessage styles={styles}>{errorMessage}</ErrorMessage>
                 </FormBackground>
             </LinearGradients>

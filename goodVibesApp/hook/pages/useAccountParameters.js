@@ -9,12 +9,12 @@ export default function useAccountParameters() {
     const submitAccountParameter = async (data) => {
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        axios.put(`http://localhost:5000/api/user/${id}`, {
+        axios.put(`https://cheerify.herokuapp.com/api/users/${id}`, {
+                identifier: data.email,
                 email: data.email,
                 password: data.password
             },
             {
-                method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -25,11 +25,11 @@ export default function useAccountParameters() {
     const submitPersonalParameter = async (data) => {
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        axios.put(`http://localhost:5000/api/user/${id}`, {
+        axios.put(`https://cheerify.herokuapp.com/api/users/${id}`, {
                 name: data.name,
+                username: data.name
             },
             {
-                method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -37,10 +37,14 @@ export default function useAccountParameters() {
         )
     }
 
+    const submitMessageParams = async (data) => {
+    }
+
     return {
         errorMessageAccountParameter,
         errorMessagePersonnalParameter,
         submitAccountParameter,
         submitPersonalParameter,
+        submitMessageParams,
     }
 }

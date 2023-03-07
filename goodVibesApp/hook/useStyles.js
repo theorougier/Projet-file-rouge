@@ -23,6 +23,7 @@ export default function useStyles() {
             position: 'relative',
             alignItems: 'center',
             justifyContent: 'center',
+            backgroundColor: "#C5719E"
         },
         image: {
             margin: 40,
@@ -70,6 +71,8 @@ export default function useStyles() {
             borderColor: 'white',
             margin: 12,
             borderRadius: 10,
+            color: 'white',
+            textTransform: 'capitalize'
         },
         containerBtnBackgroundWhite: {
             borderWidth: 2,
@@ -81,8 +84,8 @@ export default function useStyles() {
             borderRadius: 10,
         },
         titleH1: {
-            fontSize: 58,
-            padding: 20,
+            fontSize: 36,
+            padding: 10,
             color: 'white',
             marginTop: 20,
             fontFamily: 'GentyDemo-Regular'

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Good Vibes",
+    "name": "GoodVibes",
     "slug": "goodVibesApp",
     "version": "1.0.0",
     "assetBundlePatterns": [
@@ -15,9 +15,8 @@
     "android": {
       "package": "org.name.goodVibesApp"
     },
-    "runtimeVersion": "1.0.0",
-    "updates": {
-      "url": "https://u.expo.dev/ecb7131d-65a3-41fd-b72e-fea2d15a16fd"
-    }
+    "runtimeVersion": "exposdk:47.0.0",
+    "updates": {},
+    "description": ""
   }
 }

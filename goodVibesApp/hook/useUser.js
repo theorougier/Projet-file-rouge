@@ -9,7 +9,7 @@ export default function useUser() {
     const getUser = async () => {
         let token = await SecureStore.getItemAsync('token')
         let id = await SecureStore.getItemAsync('userId')
-        const response = await fetch(`http://localhost:5001/api/user/${id}`,
+        const response = await fetch(`https://cheerify.herokuapp.com/api/users/${id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`

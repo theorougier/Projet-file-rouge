@@ -26,7 +26,7 @@ export default function FormPersonalInformation({action, submit, styles, registe
                         <TextInput
                             placeholder={'Prenom'}
                             style={styles.input}
-                            value={userName}
+                            value={value}
                             autoCapitalize='none'
                             placeholderTextColor={'rgba(199, 199, 199, 1)'}
                             onChangeText={value => onChange(value)}

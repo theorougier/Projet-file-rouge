@@ -19,7 +19,7 @@ export default function Options() {
                     <View style={styles.flexRowContainer}>
                         <Logo/>
                         <SettingButton handlePress={() => navigation.navigate('Home')}>
-                            <Image source={require('../assets/img/arrowLeft.png')}/>
+                            <Image source={require('../assets/img/arrowLeft-2.png')}/>
                         </SettingButton>
                     </View>
                     <Title>Settings</Title>

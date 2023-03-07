@@ -9,9 +9,7 @@
         "gradleCommand": ":app:assembleDebug"
       },
       "ios": {
-        "buildConfiguration": "Debug",
-        "simulator": true,
-        "bundleIdentifier": "com.theazz.goodvibesapp"
+        "buildConfiguration": "Debug"
       }
     },
     "preview": {
